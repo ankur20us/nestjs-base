@@ -5,7 +5,9 @@
  *************************
 */
 
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, UseGuards } from '@nestjs/common';
+
+import { JwtVerifyGuard } from 'src/shared/guards';
 
 import { HelloWorldModuleService } from './hello.world.module.service';
 
@@ -15,6 +17,7 @@ export class HelloWorldModuleController {
         private readonly helloWorldModuleService: HelloWorldModuleService
     ) {}
 
+    @UseGuards(JwtVerifyGuard)
     @Get()
     async getHello(): Promise<string> {
         return this.helloWorldModuleService.getMessage();

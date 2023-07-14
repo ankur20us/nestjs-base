@@ -12,14 +12,18 @@ import { Observable, tap } from 'rxjs';
 
 import { CONSTANTS } from 'src/shared/modules/';
 
+/**
+ * Interceptor is responsible to add the ENTER/EXIT of any call in the system,
+ * along with the total time spent to return the response.
+ * 1. If the setup is PROD in nature: METHOD, URL -> will be logged
+ * 2. Else: METHOD, URL, BODY -> will be logged.
+ */
 @Injectable()
 export class HttpLoggingInterceptor implements NestInterceptor {
-    private readonly logger = new Logger(HttpLoggingInterceptor.name);
-    private isIAmProd = false;
-
-    constructor(private readonly configService: ConfigService) {
-        this.isIAmProd = this.configService.get<boolean>('SYSTEM.IS_PROD');
-    }
+    private readonly className = HttpLoggingInterceptor.name;
+    private readonly logger = new Logger(this.className);
+    
+    constructor(private readonly configService: ConfigService) {}
 
     intercept( context: ExecutionContext, next: CallHandler<any> ): Observable<any> | Promise<Observable<any>> {
         
@@ -58,7 +62,7 @@ export class HttpLoggingInterceptor implements NestInterceptor {
     } {
         const { method, url, body } = request;
 
-        return this.isIAmProd ? { method, url } : { method, url, body };
+        return this.configService.get<boolean>('SYSTEM.IS_PROD') ? { method, url } : { method, url, body };
     }
 
     private _getMetaDataFromResponse(response: Response): { status: number } {

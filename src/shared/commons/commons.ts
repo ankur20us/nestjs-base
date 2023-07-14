@@ -13,6 +13,19 @@ import { v4 as uuidv4 } from 'uuid';
 import { CONSTANTS } from 'src/shared/modules';
 
 /**
+ * 
+ * @param str string source to split
+ * @param splitBy string source string to split by
+ * @returns string[]
+ */
+export const split = (str: string, splitBy: string): string[] => {
+    str = setDefaultValue(str, '');
+    splitBy = setDefaultValue(splitBy, '');
+
+    return str.split(splitBy);
+};
+
+/**
  * @function cleanNullUndefinedFromArray
  * @description Cleans the array from NULL, UNDEFINED
  */
@@ -41,15 +54,6 @@ export const compareString = (string1: string, string2: string, caseInSensitvity
     }
 
     return string1 === string2;
-};
-
-/**
- * @function generateUuid returns the uuid.
- * @param uuidLength Length of the uuid to generate
- * @returns returns a uuid
- */
-export const generateUuid = (): string => {
-    return uuidv4();
 };
 
 /**

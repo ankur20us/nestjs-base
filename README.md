@@ -63,8 +63,8 @@ $ npm run test:cov
 ```bash
 - [ ] Auth Middleware
 - [ ] Session Middleware
-- [ ] Auth Guard
-- [ ] JWT Session Handling
+- [ X ] Auth Guard
+- [ X ] JWT Session Handling
 ```
 
 ## Support

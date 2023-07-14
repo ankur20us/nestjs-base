@@ -5,4 +5,4 @@
  *************************
 */
 
-export * as Commons from './commons';
+export * from './jwt.verify.guard';

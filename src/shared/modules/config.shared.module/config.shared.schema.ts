@@ -21,6 +21,7 @@ export const ConfigSharedSchema = () => ({
     // JWT CONFIG
     JWT: {
         SECRET: process.env.JWT_SECRET,
+        ALGORITHM: process.env.JWT_ALGORITHM,
         EXPIRES_IN: parseInt(process.env.JWT_EXPIRES_IN, 10),
     },
 
