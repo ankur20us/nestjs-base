@@ -8,12 +8,17 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 
 import { HelloWorldModule } from 'src/hello.world.module/';
-import { HttpBingoModule } from 'src/httpbingo.module';
 import { CorrelationMiddleware } from 'src/shared/middlewares';
 import { SharedModulesModule } from 'src/shared/modules/';
 
+/**
+ * 1. IMPORT List to Load the Modules 
+ * 2. Add MongooseModule  
+ */
+const IMPORTS = [ HelloWorldModule, SharedModulesModule ];
+
 @Module({
-    imports: [ HelloWorldModule, SharedModulesModule, HttpBingoModule ],
+    imports: IMPORTS,
 })
 export class AppModule implements NestModule {
     

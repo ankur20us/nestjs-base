@@ -7,7 +7,7 @@
 
 import { Injectable, Logger } from '@nestjs/common';
 
-import { HttpBingoService } from 'src/httpbingo.module';
+import { HttpBingoService } from 'src/http.bingo.module';
 
 @Injectable()
 export class HelloWorldModuleService {

@@ -25,6 +25,11 @@ export const ConfigSharedSchema = () => ({
         EXPIRES_IN: parseInt(process.env.JWT_EXPIRES_IN, 10),
     },
 
+     // MONGO CONFIG
+    MONGO: {
+        CONNECTION_URL: process.env.MONGO_CONNECTION_URL,
+    },
+
     // CONSTANTS
     CONSTANTS: { 
         ...CONSTANTS,    

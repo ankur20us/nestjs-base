@@ -132,3 +132,22 @@ export class BaseException extends Error {
     }
 }
 
+export class AppException extends Error {
+    #baseError: Error;
+    #message: string;
+
+    constructor(baseError: Error, message: string) {
+        super();
+        this.#baseError = baseError;
+        this.#message = message;
+    }
+
+    public get error() {
+        return this.#baseError;
+    }
+
+    public get message() {
+        return this.#message;
+    }
+}
+

@@ -7,7 +7,7 @@
 
 import { Module } from '@nestjs/common';
 
-import { HttpBingoModule } from 'src/httpbingo.module';
+import { HttpBingoModule } from 'src/http.bingo.module';
 
 import { HelloWorldModuleController } from './hello.world.module.controller';
 import { HelloWorldModuleService } from './hello.world.module.service';

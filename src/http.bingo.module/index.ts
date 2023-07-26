@@ -53,7 +53,7 @@ export class HttpBingoService {
     providers: [ HttpBingoService ],
     exports: [ HttpBingoService ],
 })
-export class HttpBingoModule  implements OnModuleInit, OnModuleDestroy {
+export class HttpBingoModule implements OnModuleInit, OnModuleDestroy {
 
     private readonly className = HttpBingoModule.name;
     private readonly logger = new Logger(this.className);

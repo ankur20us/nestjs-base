@@ -40,6 +40,17 @@ const CoreResponseConstants = {
     },
 };
 
+const ModuleLifeCycle = {
+    CLOSE: 'close',
+    CONNECTED: 'connected',
+    CONNECTING: 'connecting',
+    ERROR: 'error',
+    DISCONNECTED: 'disconnected',
+    DISCONNECTING: 'disconnecting',
+    READY: 'ready',
+    RECONNECTED: 'reconnected',
+};
+
 export const CONSTANTS = {
 
     STRING: {
@@ -62,5 +73,7 @@ export const CONSTANTS = {
     },
 
     RESPONSE: { ...CoreResponseConstants },
+
+    MODULE_LIFECYCLE: { ...ModuleLifeCycle },
 
 };

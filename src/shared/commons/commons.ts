@@ -195,17 +195,41 @@ export const MessageGenerator = {
     ModuleLifeCycle: {
 
         onModuleInit: (moduleName: string): string => {
-            
             moduleName = setDefaultValue(moduleName, '');
 
             return `${moduleName} initiated`;
         },
 
         onModuleDestroy: (moduleName: string): string => {
-            
             moduleName = setDefaultValue(moduleName, '');
 
             return `${moduleName} destroyed`;
+        },
+    
+        onError: (moduleName: string): string => {
+            moduleName = setDefaultValue(moduleName, '');
+            
+            return `Error in ${moduleName}`;
+        },
+
+        onConnected: (moduleName: string, connectionName?: string): string => {
+            moduleName = setDefaultValue(moduleName, '');
+            connectionName = setDefaultValue(connectionName, null);
+            const eventName = CONSTANTS.MODULE_LIFECYCLE.CONNECTED;
+
+            const finalString = cleanNullUndefinedFromArray([ moduleName, connectionName, eventName ]).join(' ');
+            
+            return finalString;
+        },
+
+        onReady: (moduleName: string, connectionName?: string): string => {
+            moduleName = setDefaultValue(moduleName, '');
+            connectionName = setDefaultValue(connectionName, null);
+            const eventName = CONSTANTS.MODULE_LIFECYCLE.READY;
+
+            const finalString = cleanNullUndefinedFromArray([ moduleName, connectionName, eventName ]).join(' ');
+            
+            return finalString;
         },
     },
     

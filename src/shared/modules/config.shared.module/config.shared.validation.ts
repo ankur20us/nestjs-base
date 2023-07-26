@@ -25,4 +25,7 @@ export const ConfigSharedValidation = Joi.object({
         'none'
     ).default('HS256'),
     JWT_EXPIRES_IN: Joi.number().integer().min(100).max(3000).default(3600),
+
+    // MONGO VALIDATION
+    MONGO_CONNECTION_URL: Joi.string().default('mongodb://localhost:27017/db'),
 });

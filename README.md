@@ -45,28 +45,71 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Explanation
+1. A Basic REST based framework with proper folder structures to handle the common use cases of:
 
-```bash
-# unit tests
-$ npm run test
+    1. ## EsLint
 
-# e2e tests
-$ npm run test:e2e
+        1. With **Header Plugin** Configured
+        2. **Imports Group** Configured
+        3. **eslint-plugin-you-dont-need-lodash-underscore** Configured
+        
+         
+    2. ## editorconfig
 
-# test coverage
-$ npm run test:cov
-```
+        1. Preconfigured **editorconfig** for same behaviour across different OS
 
-## TODO
+    3. ## gitignore
 
-```bash
-- [ ] Auth Middleware
-- [ ] Session Middleware
-- [ X ] Auth Guard
-- [ X ] JWT Session Handling
-```
+        1. Preconfigured 
 
+    4. ## Middlewares
+        
+        1. Correlation Id Middleware
+
+            - Responsible to add the x-correlation-id in case the Request Header is not passed
+            - Better for tracking purposes
+            - Added for all ROUTES so
+
+                - If passed, it will be used
+                - Generated and returned back instead 
+
+    5. ## Guards
+
+    6. ## Pipes
+
+    7. ## Filters
+
+    8. ## Modules
+
+        1. ## shared/modules/config.shared.module
+            - Default values along with validation of the ENV values can be checked in **config.shared.validation.ts**
+            - ENV values can be passed in A_B_C form
+            - Will be exposed in A.B_C or A.B.C form depending your implementation
+            - This is achieved in **config.shared.schema.ts**
+            - **config.shared.schema.ts** transfroms the datatype of an ENV as well.
+        
+        2. ## shared/modules/jwt.shared.module
+            - LOADS - JwtModule
+            - NEEDS
+                - ENV
+                    - JWT_SECRET
+                    - JWT_EXPIRES_IN
+                    - JWT_ALGORITHM - Check the valid values from config.shared.validations.ts file
+            - EXPOSES: JwtSharedService
+            - IMPLEMENTED:
+                - verifyToken 
+                - generateToken
+
+        3. ## src/http.bingo.module
+            - Basic HTTPService module to show the interaction with any 3rd Party REST Server
+
+        4. ## src/mongoose.module
+            - Mongoose Connection Module to show the connectivity with Mongo Db
+            - If needed load **MongooseConfigModule** in app.module
+            - Add one folder for each collection you want to expose functions for in src/mongoose.module
+            - Update barrel import file and add its loading in  **MongooseConfigModule** -> providers, exports section
+            
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
